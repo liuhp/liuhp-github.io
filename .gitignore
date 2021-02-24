@@ -4,5 +4,5 @@ Thumbs.db
 node_modules/
 public/
 .deploy*/
-.github-deploy-key
-.github-deploy-key.pub
+./.github-deploy-key
+./.github-deploy-key.pub
