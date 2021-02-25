@@ -14,7 +14,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           version: ${{ matrix.node_version }}
-      - name: Setup hexo
+      - name: Setup hexo env
         env:
           ACTION_DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY_PRIVATE }}
         run: |
@@ -29,5 +29,5 @@ jobs:
       - name: Hexo deploy
         run: |
           hexo clean
-          hexo generate 
+          hexo g
           hexo d
