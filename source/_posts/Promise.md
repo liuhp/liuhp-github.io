@@ -1,7 +1,10 @@
 ---
 title: Promise
 date: 2021-02-23 14:58:30
-tags:
+tags: Promise
+categories: Javascript
+copyright: true
+comments: true
 ---
 
 >若想系统学习Promise可以阅读：[阮一峰大神写的Promise对象](https://es6.ruanyifeng.com/#docs/promise)，此篇记录常用用法。

@@ -117,6 +117,26 @@ live2d:
   mobile:
     show: false #是否在手机端显示
 
+# Code Highlight theme
+# Available values: normal | night | night eighties | night blue | night bright
+# https://github.com/chriskempson/tomorrow-theme
+highlight_theme: night
+codeblock:
+  # Manual define the border radius in codeblock
+  # Leave it empty for the default 1
+  border_radius:
+  # Add copy button on codeblock
+  copy_button:
+    enable: true
+    # Show text copy result
+    show_result: true
+
+symbols_count_time:
+  symbols: false #是否统计字数
+  time: false #是否统计阅读时长
+  total_symbols: false #是否统计总字数
+  total_time: false #是否统计总阅读时长
+
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
