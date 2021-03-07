@@ -7,7 +7,7 @@ copyright: true
 comments: true
 ---
 
-<img src="https://cdn.pixabay.com/photo/2021/01/24/20/21/cloud-5946381_1280.jpg" width="100%" height="480px;"/>
+<!-- <img src="https://cdn.pixabay.com/photo/2021/01/24/20/21/cloud-5946381_1280.jpg" width="100%" height="480px;"/> -->
 
 若想系统学习Promise可以阅读：[阮一峰大神写的Promise对象](https://es6.ruanyifeng.com/#docs/promise)，此篇记录常用用法。
 

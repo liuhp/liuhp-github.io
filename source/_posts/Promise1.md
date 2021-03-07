@@ -7,7 +7,6 @@ copyright: true
 comments: true
 ---
 
-![](https://www.textures.com/static/testimonials/gallery2.jpg)
 若想系统学习Promise可以阅读：[阮一峰大神写的Promise对象](https://es6.ruanyifeng.com/#docs/promise)，此篇记录常用用法。
 
 ### Promise顺序请求
