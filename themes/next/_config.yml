@@ -209,7 +209,7 @@ footer:
     color: "#ff0000"
 
   # If not defined, `author` from Hexo `_config.yml` will be used.
-  copyright: 刘海儿 #别填bool型，最后显示的东西是copyright || author，即左边没有设置的话就显示作者
+  copyright: liuhaier #别填bool型，最后显示的东西是copyright || author，即左边没有设置的话就显示作者
 
   powered:
     # Hexo link (Powered by Hexo).
