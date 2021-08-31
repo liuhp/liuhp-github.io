@@ -19,8 +19,10 @@ comments: true
 
 vuex是一个状态管理模式，适用于多个组件共享同一状态时的场景，这里状态也可以理解为数据变量。
 
-<!-- <img src="./images/vuex-1.png" > -->
-<!-- ![vuex](./vuex-1.png) -->
+<div align=center>
+<img src="vuex-1.png" width = 65%>
+<!-- ![vuex](vuex-1.png) -->
+</div>
 
 使用vuex好处：
 - 能够在vuex中集中管理共享的数据，易于开发和后期维护
