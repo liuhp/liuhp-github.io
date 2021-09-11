@@ -101,6 +101,9 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: next
 
+aplayer:
+  meting: true  # Meting support, default: false
+
 live2d:
   enable: true
   scriptFrom: local

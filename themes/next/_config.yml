@@ -990,3 +990,41 @@ site_state: true # 是否在侧边栏加入日志、分类、标签等跳转链�
 daovoice:
   enabled: true
   app_id: ab8c4af5 # 输入你自己的 app_id
+
+# --------------------------------------------------------------
+# APlayer settings
+# --------------------------------------------------------------
+# enabled:  true/false   开启/关闭
+# id: song id / playlist id / album id / search keyword   歌曲ID、歌单ID、关键字
+# server: netease, tencent, kugou, xiami, baidu     音乐平台
+# type: song, playlist, album, search, artist  类型
+# auto: music link, support: netease, tencent, xiami
+# fixed: true/false   吸底模式
+# mini: true/false   迷你模式
+# autoplay: true/false   自动播放
+# theme: #eeeeee 主题颜色
+# loop: values: 'all', 'one', 'none' 循环播放
+# order: values: 'list', 'random' 是否随机播放
+# preload: values: 'none', 'metadata', 'auto' 预载入
+aplayer:
+  enabled: true
+  id: 3099335800
+  server: netease
+  type: playlist
+  auto:
+  fixed: true
+  mini: true
+  autoplay: true
+  theme: #607d8b
+  loop: 'all'
+  order: 'random'
+  preload: 'auto'
+  volume: 0.7
+  mutex: true
+  listfolded: true
+  listmaxheight: 340px
+  storagename: metingjs
+  cdn:
+    css: https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css
+    js: https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js
+    meting: https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js
