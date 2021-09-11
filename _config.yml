@@ -113,7 +113,7 @@ live2d:
   display: #放置位置和大小
     position: right
     width: 150
-    height: 350
+    height: 450
   mobile:
     show: false #是否在手机端显示
 

@@ -265,11 +265,17 @@ post_meta:
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
-  separated_meta: false #分隔符|
-  item_text_post: fasle #是否统计站点总字数
-  item_text_total: false #是否同级文章总字数
-  awl: 2 #平均每个字符的长度
-  wpm: 300 #words per minute
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+  awl: 4 #平均每个字符的长度
+  wpm: 275
+  suffix: "mins." #words per minute
+  # separated_meta: false #分隔符|
+  # item_text_post: fasle #是否统计站点总字数
+  # item_text_total: false #是否同级文章总字数
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -720,10 +726,10 @@ leancloud_visitors:
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
 # Visit https://firebase.google.com/docs/firestore/ to get more information about firestore.
 firestore:
-  enable: false
+  enable: true
   collection: articles # Required, a string collection name to access firestore database
   apiKey: # Required
-  projectId: # Required
+  projectId: github-web-liuhp # Required
 
 # Show Views / Visitors of the website / page with busuanzi.
 # For more information: http://ibruce.info/2015/04/04/busuanzi/
@@ -970,3 +976,17 @@ enabled: true
 # Posts / Categories / Tags in sidebar.
 site_state: true # 是否在侧边栏加入日志、分类、标签等跳转链接
 
+# Google Analytics
+# google_analytics:
+#   tracking_id: G-H4RHWWZTM6 # 你的跟踪代码
+#   # By default, NexT will load an external gtag.js script on your site.
+#   # If you only need the pageview feature, set the following option to true to get a better performance.
+#   only_pageview: false
+
+# # Baidu Analytics
+# baidu_analytics: 07a825b3a6cea4656a3e0b0916c60373 # 你的 app_id
+
+# DaoVoice
+daovoice:
+  enabled: true
+  app_id: ab8c4af5 # 输入你自己的 app_id
