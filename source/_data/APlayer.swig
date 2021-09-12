@@ -13,12 +13,12 @@
     autoplay="false"
     theme="#607d8b"
     loop="all"
-    order="list"
+    order="random"
     preload="auto"
     volume="0.5"
     mutex="true"
     lrc-type="3"
-    list-folded="true"
+    list-folded="false"
     list-max-height="340px"
     storage-name="metingjs" >
   </meting-js>
