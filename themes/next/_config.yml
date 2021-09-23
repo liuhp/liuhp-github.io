@@ -265,14 +265,20 @@ post_meta:
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
-  symbols: true
-  time: true
-  total_symbols: true
-  total_time: true
-  exclude_codeblock: false
-  awl: 4 #平均每个字符的长度
-  wpm: 275
-  suffix: "mins." #words per minute
+  separated_meta: true
+  item_text_post: true
+  item_text_total: true
+  awl: 2
+  wpm: 300
+# symbols_count_time:
+#   symbols: true
+#   time: true
+#   total_symbols: true
+#   total_time: true
+#   exclude_codeblock: false
+#   awl: 4 #平均每个字符的长度
+#   wpm: 275
+#   suffix: "mins." #words per minute
   # separated_meta: false #分隔符|
   # item_text_post: fasle #是否统计站点总字数
   # item_text_total: false #是否同级文章总字数
@@ -736,16 +742,14 @@ firestore:
 # Show Views / Visitors of the website / page with busuanzi.
 # For more information: http://ibruce.info/2015/04/04/busuanzi/
 busuanzi_count:
-  enable: false
-  # total_visitors_icon: fa fa-user
-  # total_views_icon: fa fa-eye
-  # post_views_icon: far fa-eye
-  total_visitors: false #是否统计总访客数
-  total_visitors_icon: user #访客数图标为人像
-  total_views: false #是否同级总访问数
-  total_views_icon: eye #访问数图标为眼睛
-  post_views: false #是否统计文章访问数
-  post_views_icon: eye #访问数图标为眼睛
+  enable: true
+  total_visitors: true
+  total_visitors_icon: fa fa-user
+  total_views: true
+  total_views_icon: fa fa-eye
+  post_views: true
+  post_views_icon: far fa-eye
+
 
 
 # ---------------------------------------------------------------
