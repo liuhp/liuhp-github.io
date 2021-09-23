@@ -281,18 +281,17 @@ symbols_count_time:
 tag_icon: false
 
 # Donate (Sponsor) settings
-# Front-matter variable (unsupport animation).
 reward_settings:
-  # If true, a donate button will be displayed in every article by default.
-  enable: false
-  animation: false
-  #comment: Buy me a coffee
+  # If true, reward will be displayed in every article by default.
+  enable: true
+  animation: true
+  comment:  您的支持是我继续创作最大的动力！
 
 reward:
-  enable: true
-  wechatpay: /images/WechatPay.png
-  alipay: /images/Alipay.png
-  comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
+  wechatpay: /images/wechatpay.jpg
+  alipay: /images/alipay.jpg
+  # enable: true
+  # comment: 坚持原创技术分享，您的支持将鼓励我继续创作！
   #paypal: /images/paypal.png
   #bitcoin: /images/bitcoin.png
 
@@ -303,6 +302,7 @@ follow_me:
   #Telegram: https://t.me/channel_name || fab fa-telegram
   #WeChat: /images/wechat_channel.jpg || fab fa-weixin
   #RSS: /atom.xml || fa fa-rss
+  Github: https://github.com/liuhp || fa fa-github
 
 # Related popular posts
 # Dependencies: https://github.com/tea3/hexo-related-popular-posts
@@ -388,7 +388,7 @@ codeblock:
     dark: prism-dark
   # Add copy button on codeblock
   copy_button:
-    enable: false
+    enable: true
     # Available values: default | flat | mac
     style:
 
@@ -397,7 +397,7 @@ back2top:
   # Back to top in sidebar.
   sidebar: false
   # Scroll percent label in b2t button.
-  scrollpercent: false
+  scrollpercent: true
 
 # Reading progress bar
 reading_progress:
@@ -482,6 +482,7 @@ font:
 # SEO Settings
 # See: https://theme-next.js.org/docs/theme-settings/seo
 # ---------------------------------------------------------------
+seo: true
 
 # If true, site-subtitle will be added to index page.
 # Remember to set up your site-subtitle in Hexo `_config.yml` (e.g. subtitle: Subtitle)
@@ -638,19 +639,20 @@ livere_uid: # <your_uid>
 # Gitalk
 # For more information: https://gitalk.github.io
 gitalk:
-  enable: false
-  github_id: # GitHub repo owner
-  repo: # Repository name to store issues
-  client_id: # GitHub Application Client ID
-  client_secret: # GitHub Application Client Secret
-  admin_user: # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
+  enable: true
+  github_id: liuhp # GitHub repo owner
+  repo: liuhp.github.io # Repository name to store issues
+  client_id: 4909b9af4e8af9c97892 # GitHub Application Client ID
+  client_secret: b0c5196671369145dd90fc79e96602549aad1b59 # GitHub Application Client Secret
+  admin_user: liuhp # GitHub repo owner and collaborators, only these guys can initialize gitHub issues
   distraction_free_mode: true # Facebook-like distraction free mode
   # When the official proxy is not available, you can change it to your own proxy address
-  proxy: https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token # This is official proxy adress
+  # proxy: https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token # This is official proxy adress
+  proxy: https://cors.zhaoqi.workers.dev/corsproxy/?apiurl=https://github.com/login/oauth/access_token
   # Gitalk's display language depends on user's browser or system environment
   # If you want everyone visiting your site to see a uniform language, you can set a force language value
   # Available values: en | es-ES | fr | ru | zh-CN | zh-TW
-  language:
+  language: zh-CN
 
 # Utterances
 # For more information: https://utteranc.es
