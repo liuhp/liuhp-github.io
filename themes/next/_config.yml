@@ -317,9 +317,9 @@ follow_me:
 # Related popular posts
 # Dependencies: https://github.com/tea3/hexo-related-popular-posts
 related_posts:
-  enable: false
+  enable: true
   title: # Custom header, leave empty to use the default one
-  display_in_home: false
+  display_in_home: true
   params:
     maxCount: 5
     #PPMixingRate: 0.0
@@ -558,7 +558,7 @@ fancybox: false
 # A JavaScript library for zooming images like Medium.
 # Warning: Do not enable both `fancybox` and `mediumzoom`.
 # For more information: https://medium-zoom.francoischalifour.com
-mediumzoom: false
+mediumzoom: true
 
 # Vanilla JavaScript plugin for lazyloading images.
 # For more information: https://apoorv.pro/lozad.js/demo/
@@ -732,7 +732,7 @@ leancloud_visitors:
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
-  security: fasle
+  security: true
 
 # Another tool to show number of visitors to each article.
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
@@ -771,12 +771,12 @@ algolia_search:
 # Local Search
 # Dependencies: https://github.com/next-theme/hexo-generator-searchdb
 local_search:
-  enable: false
+  enable: true
   # If auto, trigger search by changing input.
   # If manual, trigger search by pressing enter key or search button.
   trigger: auto
   # Show top n results per article, show all results by setting to -1
-  top_n_per_article: 1
+  top_n_per_article: 3
   # Unescape html strings to the readable one.
   unescape: false
   # Preload the search data when the page loads.
