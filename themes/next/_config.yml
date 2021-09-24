@@ -232,6 +232,8 @@ footer:
     gongan_num:
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
     gongan_icon_url:
+  #统计
+  counter: true
 
 # ---------------------------------------------------------------
 # Post Settings
@@ -265,23 +267,25 @@ post_meta:
 # Post wordcount display settings
 # Dependencies: https://github.com/next-theme/hexo-word-counter
 symbols_count_time:
-  separated_meta: true
-  item_text_post: true
-  item_text_total: true
-  awl: 2
+  enable: true
+  symbols: true
+  total_symbols: true
+  total_time: true
+  awl: 2 #平均每个字符的长度
   wpm: 300
-# symbols_count_time:
-#   symbols: true
-#   time: true
-#   total_symbols: true
-#   total_time: true
-#   exclude_codeblock: false
-#   awl: 4 #平均每个字符的长度
-#   wpm: 275
-#   suffix: "mins." #words per minute
-  # separated_meta: false #分隔符|
-  # item_text_post: fasle #是否统计站点总字数
-  # item_text_total: false #是否同级文章总字数
+  exclude_codeblock: false
+  suffix: "mins." #words per minute
+  separated_meta: true #分隔符|
+  item_text_post: true #是否统计站点总字数
+  item_text_total: true #是否同级文章总字数
+
+post_wordcount:
+  item_text: true       
+  wordcount: true       # 单篇 字数统计
+  min2read: true        # 单篇 阅读时长
+  totalcount: false     # 网站 字数统计
+  separated_meta: true
+
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
@@ -728,7 +732,7 @@ leancloud_visitors:
   # Dependencies: https://github.com/theme-next/hexo-leancloud-counter-security
   # If you don't care about security in leancloud counter and just want to use it directly
   # (without hexo-leancloud-counter-security plugin), set `security` to `false`.
-  security: false
+  security: fasle
 
 # Another tool to show number of visitors to each article.
 # Visit https://console.firebase.google.com/u/0/ to get apiKey and projectId.
