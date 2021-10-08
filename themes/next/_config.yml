@@ -279,13 +279,6 @@ symbols_count_time:
   item_text_post: true #是否统计站点总字数
   item_text_total: true #是否同级文章总字数
 
-post_wordcount:
-  item_text: true       
-  wordcount: true       # 单篇 字数统计
-  min2read: true        # 单篇 阅读时长
-  totalcount: false     # 网站 字数统计
-  separated_meta: true
-
 
 # Use icon instead of the symbol # to indicate the tag at the bottom of the post
 tag_icon: false
