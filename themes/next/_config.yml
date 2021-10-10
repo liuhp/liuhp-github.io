@@ -8,7 +8,7 @@
 # Theme Core Configuration Settings
 # See: https://theme-next.js.org/docs/theme-settings/
 # ---------------------------------------------------------------
-
+post_asset_folder: true
 # Allow to cache content generation.
 cache:
   enable: true
