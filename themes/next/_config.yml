@@ -248,8 +248,8 @@ save_scroll: false
 # Automatically excerpt description in homepage as preamble text.
 excerpt_description: true
 auto_excerpt: 
-  enable: false #自动截取一定程度的摘要
-  length: 150
+  enable: true #自动截取一定程度的摘要
+  length: 30
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.
