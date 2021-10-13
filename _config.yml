@@ -99,6 +99,8 @@ ignore:
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+plugin:
+  - hexo-generator-feed
 ## Themes: https://hexo.io/themes/
 theme: next
 
@@ -149,3 +151,5 @@ deploy:
   type: git
   repository: git@github.com:liuhp/liuhp.github.io.git
   branch: master
+
+rss:
