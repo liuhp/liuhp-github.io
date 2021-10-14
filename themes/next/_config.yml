@@ -304,7 +304,7 @@ follow_me:
   #Twitter: https://twitter.com/username || fab fa-twitter
   #Telegram: https://t.me/channel_name || fab fa-telegram
   #WeChat: /images/wechat_channel.jpg || fab fa-weixin
-  #RSS: /atom.xml || fa fa-rss
+  RSS: /atom.xml || fa fa-rss
   Github: https://github.com/liuhp || fa fa-github
 
 # Related popular posts
@@ -1056,3 +1056,15 @@ valine:
   valine: //cdn.bootcdn.net/ajax/libs/valine/1.4.9/Valine.min.js
  # Valine
   #post_meta_order: 0
+
+sitemap:
+  path: sitemap.xml
+  template: ./sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 20

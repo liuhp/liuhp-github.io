@@ -44,5 +44,8 @@
     "hooks": {
       "pre-commit": "npm run eslint && npm test"
     }
+  },
+  "dependencies": {
+    "hexo-generator-feed": "^3.0.0"
   }
 }
