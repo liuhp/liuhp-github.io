@@ -80,7 +80,7 @@ console.log(typeof b); // object
 3. 日期的 toString 方法返回一个可读的日期和时间字符串。
 4. RegExp 的 toString 方法返回一个表示正则表达式直接量的字符串。
 
-而另一个转换对象的函数是 valueOf，表示对象的原始值。默认的 valueOf 方法返回这个对象本身，数组、函数、正则简单的继承了这个默认方法，也会返回对象本身。日期是一个例外，它会返回它的一个内容表示: 1970 年 1 月 1 日以来的毫秒数。
+而另一个转换对象的函数是 valueOf，表示对象的原始值。**默认的 valueOf 方法返回这个对象本身，数组、函数、正则简单的继承了这个默认方法，也会返回对象本身**。日期是一个例外，它会返回它的一个内容表示: 1970 年 1 月 1 日以来的毫秒数。
 ```javascript
 var date = new Date(2017, 4, 21);
 console.log(date.valueOf()) // 1495296000000
@@ -88,12 +88,53 @@ console.log(date.valueOf()) // 1495296000000
 
 更复杂的情况见参考文献[2],写的很详细，很简单易懂。
 
+### 操作符强制类型转换
 
+#### 一元操作符 +
+
+```javascript
+console.log(+[]); // 0
+console.log(+['1']); // 1
+console.log(+['1', '2', '3']); // NaN
+console.log(+{}); // NaN
+```
+执行的步骤是：
+
+1. 如果 obj 为基本类型，直接返回
+2. 否则，调用 valueOf 方法，如果返回一个原始值，则 JavaScript 将其返回。
+3. 否则，调用 toString 方法，如果返回一个原始值，则JavaScript 将其返回。
+4. 否则，JavaScript 抛出一个类型错误异常。
+
+注意：前面讲过：默认的 valueOf 方法返回这个对象本身
+
+#### 二元操作符 +
+
+当计算 value1 + value2时：
+
+1. lprim = ToPrimitive(value1)
+2. rprim = ToPrimitive(value2)
+3. 如果 lprim 是字符串或者 rprim 是字符串，那么返回 ToString(lprim) 和 ToString(rprim)的拼接结果
+4. 返回 ToNumber(lprim) 和 ToNumber(rprim)的运算结果
+
+```javascript
+console.log(1 + '1'); // 11（字符串）
+console.log(null + 1); // 1（数字）
+console.log([] + []); // ''(空字符串)
+console.log([] + {}); // [object Object]
+console.log(1 + true); // 2
+console.log({} + {}); // "[object Object][object Object]"
+console.log(new Date(2017, 04, 21) + 1) // "Sun May 21 2017 00:00:00 GMT+0800 (CST)1"
+```
+
+#### ==相等
+<div align=center>
+<img src="1.jpg" width = 65%>
+</div>
 
 
 参考：
 [1].[类型转换](https://zh.javascript.info/type-conversions)
-[2].[JavaScript 深入之头疼的类型转换(上)
-](https://github.com/mqyqingfeng/Blog/issues/159) 写的很细👍
+[2].[JavaScript 深入之头疼的类型转换(上)](https://github.com/mqyqingfeng/Blog/issues/159)  写的很细👍
+[3].[JavaScript 深入之头疼的类型转换(下)](https://github.com/mqyqingfeng/Blog/issues/164)
 
 
