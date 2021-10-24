@@ -1,14 +1,18 @@
 ---
-title: JS基础(二)
+title: 你不知道的JS（上）- 作用域和闭包
 date: 2021-10-21 23:04:23
-tags: JS基础
+tags: JS进阶
 categories: JavaScript
 copyright: true
 comments: true
 ---
 
-### this
+### 作用域是什么
 
-### 作用域
+### 词法作用域
 
-### 闭包
+### 函数作用域和块作用域
+
+### 提升
+
+### 作用域闭包
