@@ -1,5 +1,5 @@
 ---
-title: JS基础
+title: JS基础(一)
 date: 2021-10-21 22:58:10
 tags: JS基础
 categories: JavaScript
@@ -83,12 +83,11 @@ if (window instanceof Object) alert('Y');else alert('N'); // N
 alert(typeof(window)) // 会得到object
 ```
 
-
-
 参考：
 [1]:https://www.php.cn/js-tutorial-411579.html
 [2]:https://github.com/mqyqingfeng/Blog/issues/28
-### 类型转换
+
+
 
 
 

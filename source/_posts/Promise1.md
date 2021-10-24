@@ -2,7 +2,7 @@
 title: Promise(一)—顺序请求
 date: 2021-02-23 14:58:30
 tags: Promise
-categories: Javascript
+categories: JavaScript
 copyright: true
 comments: true
 ---

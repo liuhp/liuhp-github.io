@@ -2,7 +2,7 @@
 title: Promise(二)——并行请求
 date: 2021-02-23 14:58:30
 tags: Promise
-categories: Javascript
+categories: JavaScript
 copyright: true
 comments: true
 ---

@@ -3,7 +3,7 @@ title: Babel
 date: 2021-09-17 20:44:56
 tags:
   - Babel
-  - Webpack
+  - webpack
 categories:
   - Babel
   - Webpack

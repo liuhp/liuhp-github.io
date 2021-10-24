@@ -2,7 +2,7 @@
 title: Promise(三)-核心源码
 date: 2021-02-23 14:58:30
 tags: Promise
-categories: Javascript
+categories: JavaScript
 copyright: true
 comments: true
 ---
