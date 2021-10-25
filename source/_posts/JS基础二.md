@@ -7,11 +7,11 @@ copyright: true
 comments: true
 ---
 
-## 类型转换
-### 原始值 -> 对象
-#### 原始值转字符串
+## 一、类型转换
+### （1）原始值 -> 对象
+#### 1 原始值转字符串
 String()
-#### 原始值转数字
+#### 2 原始值转数字
 方法一：
 Number()
 方法二：
@@ -21,7 +21,7 @@ Number()
 | -------------------- | ----------- |
 | undefined	| NaN |
 | null	| 0
-| true 和 false | 	1 and 0
+| true和false | 	1 和 0
 | string | 	去掉首尾空格后的纯数字字符串中含有的数字。如果剩余字符串为空，则转换结果为 0。否则，将会从剩余字符串中“读取”数字。当类型转换出现 error 时返回 NaN。|
 
 注意：
@@ -37,24 +37,22 @@ console.log(parseFloat(".1")) // 0.1
 console.log(parseInt("0.1")) // 0
 ```
 
-#### 原始值转布尔类型
+#### 3 原始值转布尔类型
 转换规则如下：
+
 | 值 | 变成…… |
 | ------------------- | -------------|
 | +0, -0, null, undefined, NaN, "", false | false |
 | 其他值 | true |
 
-注意，
-
 >请注意:
 >- 当 Boolean 函数不传任何参数时，会返回 false;
->- 包含 0 的字符串 "0" 是 true
-一些编程语言（比如 PHP）视 "0" 为 false。但在 JavaScript 中，非空的字符串总是 true;
+>- 包含 0 的字符串 "0" 是 true一些编程语言（比如 PHP）视 "0" 为 false。但在 JavaScript中，非空的字符串总是 true;
 ```javascript
 alert( Boolean("0") ); // true
 alert( Boolean(" ") ); // 空白，也是 true（任何非空字符串都是 true）
 ```
-#### 原始值转对象
+#### 4 原始值转对象
 原始值到对象的转换非常简单，原始值通过调用 String()、Number() 或者 Boolean() 构造函数，转换为它们各自的包装对象。
 
 null 和 undefined 属于例外，当将它们用在期望是一个对象的地方都会造成一个类型错误 (TypeError) 异常，而不会执行正常的转换。
@@ -66,11 +64,11 @@ var b = new Number(a);
 console.log(typeof b); // object
 ```
 
-### 对象 -> 原始值
-#### 对象转布尔值
+### （2）对象 -> 原始值
+#### 1 对象转布尔值
 所有对象（包括函数和数组）的布尔值都是true.
 
-#### 对象转字符串和数字
+#### 2 对象转字符串和数字
 对象到字符串和对象到数字的转换都是通过调用待转换对象的一个方法来完成的。而 JavaScript 对象有两个不同的方法来执行转换，一个是 toString，一个是 valueOf,这两个方法是真实暴露出来的方法。
 
 所有的对象除了 null 和 undefined 之外的任何值都具有 toString 方法。
@@ -88,9 +86,9 @@ console.log(date.valueOf()) // 1495296000000
 
 更复杂的情况见参考文献[2],写的很详细，很简单易懂。
 
-### 操作符强制类型转换
+## 二、操作符强制类型转换
 
-#### 一元操作符 +
+### 1 一元操作符 +
 
 ```javascript
 console.log(+[]); // 0
@@ -107,7 +105,7 @@ console.log(+{}); // NaN
 
 注意：前面讲过：默认的 valueOf 方法返回这个对象本身
 
-#### 二元操作符 +
+### 2 二元操作符 +
 
 当计算 value1 + value2时：
 
@@ -126,10 +124,16 @@ console.log({} + {}); // "[object Object][object Object]"
 console.log(new Date(2017, 04, 21) + 1) // "Sun May 21 2017 00:00:00 GMT+0800 (CST)1"
 ```
 
-#### ==相等
+### 3 ==相等
+操作规则如下图：
+
 <div align=center>
 <img src="1.jpg" width = 65%>
 </div>
+
+
+
+
 
 
 参考：

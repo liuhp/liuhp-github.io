@@ -19,7 +19,7 @@ comments: true
 6. Objects: Array, function, Date
 
 新增：
-7. BigInt: 谷歌67版本出现的数据类型, 是指安全存储、操作大整数，（但是很多人不把这个做为一个类型;
+7. BigInt: 谷歌67版本出现的数据类型, 是指安全存储、操作大整数，（但是很多人不把这个做为一个类型）;
 8. Symbol：ES6新增, 这种类型的对象永不相等，即始创建的时候传入相同的值，可以解决属性名冲突的问题，做为标记;
 
 ### 类型判断
@@ -33,13 +33,14 @@ typeof:返回一个字符串
 <img src="1.jpg" width = 65%>
 </div>
 
-因为typeof不能区 Object 下很多细分的类型，如 Array、Function、Date、RegExp、Error 等。可以用Object.prototype.toString来进一步区分：
+因为Object 下有很多细分的类型，如 Array、Function、Date、RegExp、Error 等，typeof无法一一区分，因此可以用Object.prototype.toString来进一步区分：
 >When the toString method is called, the following steps are taken:
 >1. If the this value is undefined, return "[object Undefined]".
 >2. If the this value is null, return "[object Null]".
 >3. Let *O* be the result of calling ToObject passing the this value as the argument.
 >4. Let class be the value of the [[Class]] internal property of O.
 >5. Return the String value that is the result of concatenating the three Strings "[object ", class, and "]".
+
 
 ```javascript
 // 以下是11种：
