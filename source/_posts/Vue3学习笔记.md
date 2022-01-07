@@ -7,3 +7,10 @@ copyright: true
 comments: true
 ---
 
+### Vue3新增
+- 性能：比vue2快了2倍
+- tree shaking: 按需编译代码
+- composition api: 组合式api(类似hooks未来)
+- ts support
+- custom render api 自定义渲染
+
