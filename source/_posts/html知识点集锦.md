@@ -9,11 +9,11 @@ copyright: true
 comments: true
 ---
 
-#### 1. !DOCTYPE 标签：
+### 1. !DOCTYPE 标签：
 
 它是指示 web 浏览器关于页面使用哪个 HTML 版本进行编写的指令.
 
-#### 2. H5新特性
+### 2. H5新特性
 
 媒体播放的 video 和 audio
 本地存储 localStorage 和 sessionStorage
@@ -31,7 +31,7 @@ comments: true
 Form Data 对象
 绘画 canvas
 
-#### 3. 行内元素及块级元素
+### 3. 行内元素及块级元素
 
 1. HTML4中，元素被分成两大类: inline （内联元素）与 block（块级元素）。一个行内元素只占据它对应标签的边框所包含的空间。
 常见的行内元素有： a b span img strong sub sup button input label select textarea
@@ -43,10 +43,10 @@ Form Data 对象
 (2)内容上，默认情况下，行内元素只能包含文本和其他行内元素。而块级元素可以包含行内元素和其他块级元素。
 (3)行内元素与块级元素属性的不同，主要是盒模型属性上：行内元素设置 width 无效，height 无效（可以设置 line-height），设置 margin 和 padding 的上下不会对其他元素产生影响。
 
-#### 4. 自闭和标签
+### 4. 自闭和标签
 br hr img input link meta
 
-#### 5. 页面导入样式时，使用 link 和 @import 有什么区别？
+### 5. 页面导入样式时，使用 link 和 @import 有什么区别？
 （1）从属关系区别。 @import 是 CSS 提供的语法规则，只有导入样式表的作用；link 是 HTML 提供的标签，不仅可以加
      载 CSS 文件，还可以定义 RSS、rel 连接属性、引入网站图标等。
 
@@ -58,7 +58,7 @@ br hr img input link meta
 （4）DOM 可控性区别。可以通过 JS 操作 DOM ，插入 link 标签来改变样式；由于 DOM 方法是基于文档的，无法使用 @i
     mport 的方式插入样式。
 
-#### 6. 常见的浏览器内核比较
+### 6. 常见的浏览器内核比较
 Trident：这种浏览器内核是 IE 浏览器用的内核，因为在早期 IE 占有大量的市场份额，所以这种内核比较流行，以前有很多
 网页也是根据这个内核的标准来编写的，但是实际上这个内核对真正的网页标准支持不是很好。但是由于 IE 的高市场占有率，微
 软也很长时间没有更新 Trident 内核，就导致了 Trident 内核和 W3C 标准脱节。还有就是 Trident 内核的大量 Bug 等
@@ -79,7 +79,7 @@ link 渲染引擎（即浏览器核心），内置于 Chrome 浏览器之中。�
 KHTML 的分支一样。Blink 引擎现在是谷歌公司与 Opera Software 共同研发，上面提到过的，Opera 弃用了自己的 Presto 
 内核，加入 Google 阵营，跟随谷歌一起研发 Blink。
 
-#### 7. 常见浏览器所用内核
+### 7. 常见浏览器所用内核
  （1） IE 浏览器内核：Trident 内核，也是俗称的 IE 内核；
 
  （2） Chrome 浏览器内核：统称为 Chromium 内核或 Chrome 内核，以前是 Webkit 内核，现在是 Blink内核；
