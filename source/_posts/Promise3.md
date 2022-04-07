@@ -11,7 +11,336 @@ comments: true
 若想系统学习Promise可以阅读：[阮一峰大神写的Promise对象](https://es6.ruanyifeng.com/#docs/promise)，此篇记录常用用法。
 
 
-### Promise 核心源码
+### 源码讲解
+
+类写法：
+#### step1 - 同步非链式调用
+```javascript
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+Class MyPromise {
+  constructor(handle) {
+    // 定义变量
+    this.status = 'PENDING' // 状态
+    this.value = undefined  // 成功状态的变量
+    this.reason = undefined  // 失败状态的失败原因
+    
+    // 成功时改变状态，并赋值value
+    let resolve = (val) => {
+      if (this.status === PENDING) {
+        this.status = FULFILLED
+        this.value = val
+      }
+    }
+    // 失败时改变状态，并赋值reason
+    let reject = (reason) => {
+      if (this.status === PENDING) {
+        this.status = REJECTED
+        this.reason = reason
+      }
+    }
+    // catch住当前同步代码的错误
+    try {
+      handle(resolve, reject)
+    }catch (err) {
+      reject(err)
+    }
+  }
+
+  // then时根据状态执行回调
+  then(onFulfilled, onRejected) {
+    if (this.status = FULFILLED) {
+      onFulfilled(this.value)
+    }
+    if (this.status = REJECTED) {
+      onRejected(this.reason)
+    }
+  }
+}
+// 此时还不能链式调用
+```
+使用示例：
+```javascript
+function test() {
+  return new MyPromise((resolve, reject) => {
+    resolve(100)
+  })
+}
+const p1 = test()
+p1.then((res) => {
+  console.log(res)
+})
+```
+
+构造函数写法：
+```javascript
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+function MyPromise() {
+  // 定义变量
+  this.status = 'PENDING' // 状态
+  this.value = undefined  // 成功状态的变量
+  this.reason = undefined  // 失败状态的失败原因
+  
+  // 成功时改变状态，并赋值value
+  let resolve = (val) => {
+    if (this.status === PENDING) {
+      this.status = FULFILLED
+      this.value = val
+    }
+  }
+  // 失败时改变状态，并赋值reason
+  let reject = (reason) => {
+    if (this.status === PENDING) {
+      this.status = REJECTED
+      this.reason = reason
+    }
+  }
+  
+  // catch住当前同步代码的错误
+  try {
+    handle(resolve, reject)
+  }catch (err) {
+    reject(err)
+  }
+}
+// TODO  then方法
+```
+
+#### step2 - 加入异步
+
+```javascript
+// 示例
+function test() {
+  return new MyPromise((resolve, reject) => {
+    // 异步调用，该如何处理then方法？
+    setTimeout(() => {
+      resolve(100)
+    }, 1000)
+  })
+}
+const p1 = test()
+p1.then((res) => {
+  console.log(res)
+})
+``` 
+
+```javascript
+//源码
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+Class MyPromise {
+  constructor(handle) {
+    // 定义变量
+    this.status = 'PENDING' // 状态
+    this.value = undefined  // 成功状态的变量
+    this.reason = undefined  // 失败状态的失败原因
+    // changed-begin
+    this.resolveCbs = [] // 存放成功回调
+    this.rejectCbs = [] // 存放失败回调
+    // changed-end
+    
+    // 成功时改变状态，并赋值value
+    let resolve = (val) => {
+      if (this.status === PENDING) {
+        this.status = FULFILLED
+        this.value = val
+        // changed -->
+         this.resolveCbs.forEach((fn) => fn())
+      }
+    }
+    // 失败时改变状态，并赋值reason
+    let reject = (reason) => {
+      if (this.status === PENDING) {
+        this.status = REJECTED
+        this.reason = reason
+        // changed -->
+        this.rejectCbs.forEach((fn) => fn())
+      }
+    }
+    // catch住当前同步代码的错误
+    try {
+      handle(resolve, reject)
+    }catch (err) {
+      reject(err)
+    }
+  }
+
+  // then时根据状态执行回调
+  then(onFulfilled, onRejected) {
+    if (this.status = FULFILLED) {
+      onFulfilled(this.value)
+    }
+    if (this.status = REJECTED) {
+      onRejected(this.reason)
+    }
+    // 异步调用，该如何处理then方法？异步时，此时状态为pending, 需要将回调函数存起来，等待时机到了再拿出来执行
+    // changed-begin -->
+    if (this.status = PENDING) {
+      this.resolveCbs.push(() => {
+        onFulfilled(this.value)
+      })
+      this.rejectCbs.push(() => {
+        onRejected(this.reason)
+      })
+    }
+    // changed-end -->
+  }
+}
+```
+
+#### step3 - 加入链式调用
+
+```javascript
+// 示例
+function test() {
+  return new MyPromise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(100);
+    }, 1000);
+  });
+}
+
+var p1 = test();
+// p1 => resolve(100) =>  p1.then(res)  res => 100;
+// p2  => resolve(res)  =>  p2.then(res) => res ??
+
+var p2 = p1.then(
+  res => {
+    // return {
+    //   then(resolve, reject) {
+    //     reject(100000);
+    //   }
+    // };
+    return new MyPromise((resolve, reject) => {
+      resolve(
+        new MyPromise((resolve, reject) => {
+          resolve(
+            new MyPromise((resolve, reject) => {
+              resolve(100000000000);
+            })
+          );
+        })
+      );
+    });
+  },
+  err => console.log(err)
+);
+
+p2.then(
+  res => {
+    console.log(res);
+  },
+  err => {
+    console.log(err);
+  }
+);
+```
+```javascript
+//源码
+const PENDING = "pending",
+  FULFILLED = "fulfilled",
+  REJECTED = "rejected";
+
+class MyPromise {
+  constructor(executor) {
+    this.state = PENDING;
+    this.value = undefined;
+    this.reason = undefined;
+    this.onResolvedCallbacks = [];
+    this.onRejectedCallbacks = [];
+
+    let resolve = value => {
+      if (this.state === PENDING) {
+        this.state = FULFILLED;
+        this.value = value;
+        this.onResolvedCallbacks.forEach(fn => fn());
+      }
+    };
+
+    let reject = reason => {
+      if (this.state === PENDING) {
+        this.state = REJECTED;
+        this.reason = reason;
+        this.onRejectedCallbacks.forEach(fn => fn());
+      }
+    };
+    try {
+      executor(resolve, reject);
+    } catch (err) {
+      reject(err);
+    }
+  }
+
+  then(onFulFilled, onRejected) {
+    let p2 = new MyPromise((resolve, reject) => {
+      let x;
+      if (this.state === FULFILLED) {
+        setTimeout(() => {
+          x = onFulFilled(this.value);
+          //resolve(x);
+
+          resolvePromise(p2, x, resolve, reject);
+
+          // x 决定 了 p2 的状态, resolve(x)或者 reject(x)；
+        }, 0);
+      }
+
+      if (this.state === REJECTED) {
+        x = onRejected(this.reason);
+        resolvePromise(p2, x, resolve, reject);
+      }
+
+      if (this.state === PENDING) {
+        this.onResolvedCallbacks.push(() => {
+          x = onFulFilled(this.value);
+          resolvePromise(p2, x, resolve, reject);
+        });
+        this.onRejectedCallbacks.push(() => {
+          x = onRejected(this.reason);
+          resolvePromise(p2, x, resolve, reject);
+        });
+      }
+    });
+
+    return p2;
+  }
+}
+
+function resolvePromise(p2, x, resolve, reject) {
+  if (p2 === x) {
+    return new Error("引用错误");
+  }
+  // thenable 对象;  blueBird q;
+  if ((typeof x === "object" && x !== null) || typeof x === "function") {
+    try {
+      let then = x.then;
+      if (typeof then === "function") {
+        then.call(
+          x,
+          y => {
+            resolvePromise(p2, y, resolve, reject);
+          },
+          err => {
+            reject(err);
+          }
+        );
+      }
+    } catch (err) {
+      reject(err);
+    }
+  } else {
+    resolve(x);
+  }
+}
+```
+### Promise 完整核心源码
 
 参考：https://www.jianshu.com/p/43de678e918a
 
