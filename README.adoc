@@ -1,1 +1,7 @@
-= 
+= My Blog
+
+This is my static blog, via GitHub Pages, using the hexo+next tech stack.
+
+You can subscribe to my content using the rss service.
+
+https://liuhp.github.io/atom.xml[RSS]
