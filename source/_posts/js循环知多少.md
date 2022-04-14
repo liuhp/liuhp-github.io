@@ -1,13 +1,15 @@
 ---
 title: JS循环知多少
 date: 2022-04-08 17:06:35
-tags: JS基础
+tags: 
+  - JS基础
+  - JS面试
 categories: JavaScript
 copyright: true
 comments: true
 ---
 
-### 数组
+## 数组
 ### for循环、while、do...while
 听说速度最快，效率最高，其他不过多解释。
 ```javascript
@@ -46,7 +48,7 @@ for (let [key, value] of iterable) {
 ```
 ### 
 
-### 对象
+## 对象
 #### for in
 遍历对象。虽然可以遍历数组，遍历的是数组的索引，并且索引会变成string类型，不做推荐，很多坑。
 > for...in只会遍历自身的属性以及继承下来并且设置为可遍历的属性(继承的类的属性是默认不可遍历的, 但这个属性是更改为可以遍历的，就会造成遍历到不属于自身的属性)必要时可以结合使用hasOwnProperty方法，在循环内部判断一下。
@@ -58,4 +60,8 @@ for (let key in person) {
       }
 }
 ```
+
+## 性能
+原始for循环 > forEach > for...of > map > for...in
+
 
