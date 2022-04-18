@@ -1,8 +1,8 @@
 ---
 title: Webpack打包原理
 date: 2021-09-17 20:42:55
-tags: webpack
-categories: webpack
+tags: Webpack
+categories: Webpack
 copyright: true
 comments: true
 ---

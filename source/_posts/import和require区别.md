@@ -1,7 +1,7 @@
 ---
 title: import和require区别
 date: 2021-03-14 20:58:20
-tags: 工程化
+tags: 前端工程化
 categories: 前端工程化
 copyright: true
 comments: true

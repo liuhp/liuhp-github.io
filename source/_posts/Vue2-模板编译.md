@@ -1,9 +1,7 @@
 ---
 title: Vue2-模板编译
 date: 2022-03-29 10:08:35
-tags: 
-  - 学习笔记
-  - Vue
+tags: Vue
 categories: Vue
 copyright: true
 comments: true

@@ -2,7 +2,7 @@
 title: vuex学习
 date: 2021-03-05 14:06:16
 tags: Vuex
-categories: Vue
+categories: Vuex
 copyright: true
 comments: true
 ---

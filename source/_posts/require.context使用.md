@@ -1,8 +1,8 @@
 ---
 title: require.context使用
 date: 2021-10-08 17:28:03
-tags: webpack工程化
-categories: 前端工程化
+tags: Webpack
+categories: Webpack
 copyright: true
 comments: true
 ---

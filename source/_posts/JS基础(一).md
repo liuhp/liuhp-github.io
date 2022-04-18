@@ -1,7 +1,7 @@
 ---
 title: JS基础(一)
 date: 2021-10-21 22:58:10
-tags: JS基础
+tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true

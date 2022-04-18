@@ -1,7 +1,7 @@
 ---
 title: [JS]实现call/apply/bind方法
 date: 2022-04-07 15:24:53
-tags: JS基础
+tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true

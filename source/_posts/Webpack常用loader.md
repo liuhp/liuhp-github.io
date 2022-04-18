@@ -1,8 +1,8 @@
 ---
 title: Webpack常用loader
 date: 2021-09-17 20:37:15
-tags: webpack
-categories: webpack
+tags: Webpack
+categories: Webpack
 copyright: true
 comments: true
 ---

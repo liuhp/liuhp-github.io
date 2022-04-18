@@ -1,7 +1,7 @@
 ---
 title: JS循环知多少
 date: 2022-04-08 17:06:35
-tags: JS基础
+tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true
