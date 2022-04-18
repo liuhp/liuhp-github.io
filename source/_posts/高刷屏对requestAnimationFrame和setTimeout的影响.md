@@ -1,8 +1,8 @@
 ---
 title: 高刷屏对requestAnimationFrame和setTimeout的影响
 date: 2021-10-23 11:48:09
-tags: javascript
-categories: javascript
+tags: Javascript
+categories: Javascript
 copyright: true
 comments: true
 ---

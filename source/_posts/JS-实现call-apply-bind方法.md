@@ -70,7 +70,7 @@ Function.prototype.mybind = function(ctx, ...args1) {
     ctx[fn] = this
     const res = ctx[fn](...args1.concat(args2))  // 参数拼接
     delete ctx[fn] 
-    returnn res
+    return res
   }
 }
 // apply实现

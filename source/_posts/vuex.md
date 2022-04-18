@@ -1,8 +1,8 @@
 ---
 title: vuex学习
 date: 2021-03-05 14:06:16
-tags: vuex
-categories: vue
+tags: Vuex
+categories: Vue
 copyright: true
 comments: true
 ---
