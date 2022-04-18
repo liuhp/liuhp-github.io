@@ -1,10 +1,11 @@
 ---
-title: [JS]实现call/apply/bind方法
-date: 2022-04-07 15:24:53
+title: JS实现call/apply/bind方法
 tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 42397
+date: 2022-04-07 15:24:53
 ---
 
 ### call

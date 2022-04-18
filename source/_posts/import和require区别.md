@@ -1,10 +1,11 @@
 ---
 title: import和require区别
-date: 2021-03-14 20:58:20
 tags: 前端工程化
 categories: 前端工程化
 copyright: true
 comments: true
+abbrlink: 45356
+date: 2021-03-14 20:58:20
 ---
 ### 遵循规范
 require 是 AMD规范引入方式

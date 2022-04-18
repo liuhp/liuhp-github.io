@@ -1,10 +1,11 @@
 ---
 title: Promise(二)——并行请求
-date: 2021-02-23 14:58:30
 tags: Promise
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 60422
+date: 2021-02-23 14:58:30
 ---
 
 <!-- <img src="https://cdn.pixabay.com/photo/2021/01/24/20/21/cloud-5946381_1280.jpg" width="100%" height="480px;"/> -->

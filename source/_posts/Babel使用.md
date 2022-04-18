@@ -1,14 +1,15 @@
 ---
 title: Babel
-date: 2021-09-17 20:44:56
 tags:
   - Babel
   - Webpack
 categories:
   - Babel
-  - Webpack
+  - webpack
 copyright: true
 comments: true
+abbrlink: 20717
+date: 2021-09-17 20:44:56
 ---
 
 

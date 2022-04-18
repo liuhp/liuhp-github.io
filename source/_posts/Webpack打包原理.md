@@ -1,10 +1,11 @@
 ---
 title: Webpack打包原理
-date: 2021-09-17 20:42:55
 tags: Webpack
 categories: Webpack
 copyright: true
 comments: true
+abbrlink: 18755
+date: 2021-09-17 20:42:55
 ---
 ### 打包原理
 （1）读取入口文件，如项目中的main.js；

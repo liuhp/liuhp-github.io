@@ -1,12 +1,13 @@
 ---
 title: html知识点记录
-date: 2022-03-28 17:57:11
-tags: 
+tags:
   - Html
   - 面试
 categories: Html
 copyright: true
 comments: true
+abbrlink: 60546
+date: 2022-03-28 17:57:11
 ---
 
 ### 1. !DOCTYPE 标签：

@@ -1,10 +1,11 @@
 ---
 title: JS循环知多少
-date: 2022-04-08 17:06:35
 tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 13579
+date: 2022-04-08 17:06:35
 ---
 
 ### 数组遍历

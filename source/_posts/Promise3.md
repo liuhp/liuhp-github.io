@@ -1,10 +1,11 @@
 ---
 title: Promise(三)-核心源码
-date: 2021-02-23 14:58:30
 tags: Promise
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 31155
+date: 2021-02-23 14:58:30
 ---
 <!-- <img src="https://cdn.pixabay.com/photo/2021/02/07/05/15/road-5990128__480.jpg" width="100%" height="480px"> -->
 
