@@ -1,10 +1,11 @@
 ---
 title: JS基础（二）
-date: 2021-10-21 23:04:23
-tags: JS基础
+tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 22254
+date: 2021-10-21 23:04:23
 ---
 
 ## 一、类型转换

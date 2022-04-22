@@ -1,10 +1,11 @@
 ---
 title: Webpack常用plugin
-date: 2021-09-17 20:41:48
-tags: webpack
-categories: webpack
+tags: Webpack
+categories: Webpack
 copyright: true
 comments: true
+abbrlink: 3002
+date: 2021-09-17 20:41:48
 ---
 
 ### 常用plugin

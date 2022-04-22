@@ -1,10 +1,11 @@
 ---
 title: 【react-note】useState()使用
-date: 2021-10-09 17:21:02
-tags: react-note
-categories: react
+tags: React
+categories: React
 copyright: true
 comments: true
+abbrlink: 48187
+date: 2021-10-09 17:21:02
 ---
 
 ### useState是什么？

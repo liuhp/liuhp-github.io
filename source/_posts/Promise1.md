@@ -1,10 +1,11 @@
 ---
 title: Promise(一)—顺序请求
-date: 2021-02-23 14:58:30
 tags: Promise
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 49376
+date: 2021-02-23 14:58:30
 ---
 
 若想系统学习Promise可以阅读：[阮一峰大神写的Promise对象](https://es6.ruanyifeng.com/#docs/promise)，此篇记录常用用法。

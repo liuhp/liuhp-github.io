@@ -1,10 +1,11 @@
 ---
-title: [JS]实现call/apply/bind方法
-date: 2022-04-07 15:24:53
-tags: JS基础
+title: JS实现call/apply/bind方法
+tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 42397
+date: 2022-04-07 15:24:53
 ---
 
 ### call
@@ -70,7 +71,7 @@ Function.prototype.mybind = function(ctx, ...args1) {
     ctx[fn] = this
     const res = ctx[fn](...args1.concat(args2))  // 参数拼接
     delete ctx[fn] 
-    returnn res
+    return res
   }
 }
 // apply实现
