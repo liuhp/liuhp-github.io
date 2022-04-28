@@ -94,10 +94,10 @@ function Foo() {
     }
     return this
 }
-Foo.getNname = function(){ console.log(2) }
+Foo.getName = function(){ console.log(2) }
 Foo.prototype.getName = function(){ console.log(3) }
-var getNname = function(){ console.log(4) }
-function getNname (){ console.log(5) }
+var getName = function(){ console.log(4) }
+function getName (){ console.log(5) }
 
 Foo.getName() // 2
 getName() // 4
