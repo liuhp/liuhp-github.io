@@ -16,9 +16,8 @@ comments: true
 5. Vue Router4.x
 6. CSS3
 ### 准备
-1.node.js版本需要大于12.0.0
-
-2.npm
+1. node.js版本需要大于12.0.0
+2. npm
 ### 创建项目
 根据vue3官网生成模板工程：https://v3.cn.vuejs.org/guide/installation.html#vite
 
