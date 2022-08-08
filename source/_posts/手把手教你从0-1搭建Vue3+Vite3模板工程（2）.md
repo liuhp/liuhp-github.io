@@ -7,8 +7,6 @@ copyright: true
 comments: true
 ---
 
-携手创作，共同成长！这是我参与「掘金日新计划 · 8 月更文挑战」的第2天[点击查看活动详情](https://juejin.cn/post/7123120819437322247"https://juejin.cn/post/7123120819437322247")
-
 接上篇[# 手把手教你从0-1搭建Vue3+Vite3模板工程（1）](https://juejin.cn/post/7127204457925836813)
 
 ### 一、eslint、css 预处理器sass安装
