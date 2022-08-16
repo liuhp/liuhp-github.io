@@ -1,5 +1,5 @@
 ---
-title: 手把手教你从0-1搭建Vue3+Vite3模板工程（2）
+title: 0-1搭建Vue3+Vite3模板工程（2）
 date: 2022-08-08 10:13:47
 tags: Vue3
 categories: Vue3
@@ -7,7 +7,7 @@ copyright: true
 comments: true
 ---
 
-接上篇[# 手把手教你从0-1搭建Vue3+Vite3模板工程（1）](https://juejin.cn/post/7127204457925836813)
+接上篇[0-1搭建Vue3+Vite3模板工程（1）](https://juejin.cn/post/7127204457925836813)
 
 ### 一、eslint、css 预处理器sass安装
 
