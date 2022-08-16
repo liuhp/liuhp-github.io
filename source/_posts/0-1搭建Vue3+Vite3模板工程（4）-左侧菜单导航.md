@@ -1,5 +1,5 @@
 ---
-layout:  0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航
+layout:  0-1搭建Vue3+Vite3模板工程(4)-左侧菜单导航
 title: 左侧菜单导航
 date: 2022-08-16 09:47:21
 tags: Vue3
