@@ -1,7 +1,6 @@
 ---
-layout:  0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航
-title: 左侧菜单导航
-date: 2022-08-16 09:47:21
+title: 0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航
+date: 2022-08-16 17:04:37
 tags: Vue3
 categories: Vue3
 copyright: true
@@ -343,4 +342,5 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
 重新启动工程，大功告成！
 
 ![image.png](https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f12c6fcb21374dccaf585f55584737c1~tplv-k3u1fbpfcp-watermark.image?)
+
 
