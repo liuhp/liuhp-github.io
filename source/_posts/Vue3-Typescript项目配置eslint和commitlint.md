@@ -1,10 +1,11 @@
 ---
 title: Vue3+Typescript项目配置eslint和commitlint
-date: 2022-08-24 11:26:53
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 16572
+date: 2022-08-24 11:26:53
 ---
 
 

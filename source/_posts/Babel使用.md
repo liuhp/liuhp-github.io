@@ -1,3 +1,11 @@
+<!--
+ * @Author: liuhp 2190098961@qq.com
+ * @Date: 2022-07-13 09:47:21
+ * @LastEditors: liuhp 2190098961@qq.com
+ * @LastEditTime: 2023-12-20 14:08:07
+ * @FilePath: \liuhp.github.io\source\_posts\Babel使用.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 ---
 title: Babel
 tags:
@@ -5,7 +13,7 @@ tags:
   - Webpack
 categories:
   - Babel
-  - webpack
+  - Webpack
 copyright: true
 comments: true
 abbrlink: 20717

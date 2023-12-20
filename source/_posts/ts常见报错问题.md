@@ -1,10 +1,11 @@
 ---
 title: Vue3项目中使用TypeScript一些报错问题
-date: 2022-08-23 09:20:12
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 28547
+date: 2022-08-23 09:20:12
 ---
 
 Vue3项目中，使用TypeScript遇到的问题及解决方案。

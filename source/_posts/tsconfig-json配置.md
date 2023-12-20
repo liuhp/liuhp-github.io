@@ -1,10 +1,11 @@
 ---
 title: tsconfig.json配置
-date: 2022-08-09 14:32:22
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 33825
+date: 2022-08-09 14:32:22
 ---
 
 一些常见的tsconfig.json配置。TypeScript官方文档

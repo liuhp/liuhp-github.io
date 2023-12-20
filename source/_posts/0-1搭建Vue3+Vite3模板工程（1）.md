@@ -1,10 +1,11 @@
 ---
 title: 0-1搭建Vue3+Vite3模板工程（1）-创建工程
-date: 2022-08-05 10:42:35
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 44161
+date: 2022-08-05 10:42:35
 ---
 
 从0搭建一个工程可以更清楚的了解工程的组成，对工程的依赖、配置和运行理解更深入，以后搭建自己脚手架，生成自己的模板工程，提高效率。

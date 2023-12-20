@@ -1,10 +1,11 @@
 ---
 title: 0-1搭建Vue3+Vite3模板工程（2）-安装依赖
-date: 2022-08-08 10:13:47
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 39130
+date: 2022-08-08 10:13:47
 ---
 
 接上篇[0-1搭建Vue3+Vite3模板工程（1）-创建工程](https://juejin.cn/post/7127204457925836813)

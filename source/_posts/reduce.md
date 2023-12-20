@@ -1,10 +1,11 @@
 ---
 title: Array.prototype.reduce()
-date: 2022-04-28 14:35:10
 tags: JavaScript
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 25025
+date: 2022-04-28 14:35:10
 ---
 
 ### 基本使用

@@ -1,10 +1,11 @@
 ---
 title: 0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航
-date: 2022-08-16 17:04:37
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 4133
+date: 2022-08-16 17:04:37
 ---
 
 [从0-1搭建Vue3+Vite3模板工程（1）-创建工程](https://juejin.cn/post/7127204457925836813)

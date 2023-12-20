@@ -1,10 +1,11 @@
 ---
 title: 0-1搭建Vue3+Vite3模板工程（3）-布局
-date: 2022-08-11 15:56:23
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 29511
+date: 2022-08-11 15:56:23
 ---
 
 [0-1搭建Vue3+Vite3模板工程（1）-创建工程](https://juejin.cn/post/7127204457925836813/)

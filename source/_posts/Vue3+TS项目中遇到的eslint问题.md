@@ -1,10 +1,11 @@
 ---
 title: Vue3+TS项目中遇到的eslint问题
-date: 2022-08-25 16:15:41
 tags: Vue3
 categories: Vue3
 copyright: true
 comments: true
+abbrlink: 59852
+date: 2022-08-25 16:15:41
 ---
 1. Component name "Tabs" should always be multi-word  vue/multi-word-component-names
 

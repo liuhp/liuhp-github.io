@@ -1,10 +1,11 @@
 ---
 title: JS-this
-date: 2022-04-10 10:06:25
 tags: JS基础
 categories: JavaScript
 copyright: true
 comments: true
+abbrlink: 14526
+date: 2022-04-10 10:06:25
 ---
 ### 绑定规则及优先级
 
