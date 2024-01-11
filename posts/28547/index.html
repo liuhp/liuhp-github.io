@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":3,"unescape":false,"preload":false}};
+  </script>
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "ab8c4af5"
+    });
+  daovoice('update');
+  </script>
+
+<meta name="description" content="Vue3项目中，使用TypeScript遇到的问题及解决方案。  Vue3的template中使用v-for，提示错误：对象的类型为 “unknown”。ts(2571)  解决方案：给循环中item定义类型； 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue3项目中使用TypeScript一些报错问题">
+<meta property="og:url" content="http://example.com/posts/28547/index.html">
+<meta property="og:site_name" content="小达不刘">
+<meta property="og:description" content="Vue3项目中，使用TypeScript遇到的问题及解决方案。  Vue3的template中使用v-for，提示错误：对象的类型为 “unknown”。ts(2571)  解决方案：给循环中item定义类型； 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/439521acfbaa49338539156b9329e153~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/845f5d9a319247dbb9d25a55c44d84a8~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93316f5ee5ac4b3f900cf41b2bea040d~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/524c3332f3534028944f96225c5b2aac~tplv-k3u1fbpfcp-watermark.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e3d814427b6f405897321486b2d351cb~tplv-k3u1fbpfcp-watermark.image">
+<meta property="article:published_time" content="2022-08-23T01:20:12.000Z">
+<meta property="article:modified_time" content="2023-12-20T06:57:18.989Z">
+<meta property="article:author" content="w">
+<meta property="article:tag" content="Vue3">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/439521acfbaa49338539156b9329e153~tplv-k3u1fbpfcp-watermark.image">
+
+
+<link rel="canonical" href="http://example.com/posts/28547/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>  <!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+  <meting-js
+    server="netease"
+    type="playlist"
+    fixed="true"
+    id="6965569266"
+    auto="true"
+    mini="true"
+    autoplay="false"
+    theme="#607d8b"
+    loop="all"
+    order="random"
+    preload="auto"
+    volume="0.5"
+    mutex="true"
+    lrc-type="3"
+    list-folded="false"
+    list-max-height="340px"
+    storage-name="metingjs" >
+  </meting-js>
+
+<title>Vue3项目中使用TypeScript一些报错问题 | 小达不刘</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">小达不刘</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">记录学习生活</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">19</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="w"
+      src="/images/author.png">
+  <p class="site-author-name" itemprop="name">w</p>
+  <div class="site-description" itemprop="description">你若盛开</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liuhp" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liuhp" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/liuhp" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/posts/28547/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/author.png">
+      <meta itemprop="name" content="w">
+      <meta itemprop="description" content="你若盛开">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="小达不刘">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue3项目中使用TypeScript一些报错问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-23 09:20:12" itemprop="dateCreated datePublished" datetime="2022-08-23T09:20:12+08:00">2022-08-23</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2023-12-20 14:57:18" itemprop="dateModified" datetime="2023-12-20T14:57:18+08:00">2023-12-20</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Vue3/" itemprop="url" rel="index"><span itemprop="name">Vue3</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/posts/28547/" class="post-meta-item leancloud_visitors" data-flag-title="Vue3项目中使用TypeScript一些报错问题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+      </div>
+      <div class="post-meta">
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.8k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>6 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>Vue3项目中，使用TypeScript遇到的问题及解决方案。</p>
+<ol>
+<li>Vue3的template中使用v-for，提示错误：对象的类型为 “unknown”。ts(2571)</li>
+</ol>
+<p>解决方案：<br>给循环中item定义类型；</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;el-form :model=<span class="string">&quot;state.form&quot;</span> ref=<span class="string">&quot;form&quot;</span>  :label-width=<span class="string">&quot;labelWidth&quot;</span></span><br><span class="line">    @submit.native.prevent</span><br><span class="line">  &gt;</span><br><span class="line">    &lt;el-row :gutter=<span class="string">&quot;20&quot;</span>&gt;</span><br><span class="line">      &lt;el-col v-bind=<span class="string">&quot;item.layout||layout&quot;</span> v-<span class="keyword">for</span>=<span class="string">&quot;(item, index) in elements&quot;</span> :key=<span class="string">&quot;index&quot;</span>&gt;</span><br><span class="line">        &lt;el-form-item</span><br><span class="line">          :prop=<span class="string">&quot;item.prop&quot;</span></span><br><span class="line">          :label=<span class="string">&quot;item.label&quot;</span></span><br><span class="line">          :label-width=<span class="string">&quot;item.labelWidth ? (item.labelWidth + &#x27;px&#x27;) : &#x27;&#x27;&quot;</span></span><br><span class="line">        &gt;</span><br><span class="line">          &lt;!-- el-input --&gt;</span><br><span class="line">          &lt;el-input</span><br><span class="line">            v-<span class="keyword">if</span>=<span class="string">&quot;item.type === &#x27;input&#x27; || item.type === undefined&quot;</span></span><br><span class="line">            v-model=<span class="string">&quot;state.form[item.prop]&quot;</span></span><br><span class="line">            :size=<span class="string">&quot;item.size ? item.size : size&quot;</span></span><br><span class="line">            :disabled=<span class="string">&quot;item.disabled&quot;</span></span><br><span class="line">            :placeholder=<span class="string">&quot;item.placeholder&quot;</span></span><br><span class="line">            :suffix-icon=<span class="string">&quot;item.suffixIcon&quot;</span></span><br><span class="line">            clearable</span><br><span class="line">          /&gt;</span><br><span class="line">         &lt;/el-form-item&gt;</span><br><span class="line">       &lt;/el-col&gt;</span><br><span class="line">    &lt;/el-row&gt;</span><br><span class="line">  &lt;/el-form&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=<span class="string">&quot;ts&quot;</span> setup&gt;</span><br><span class="line"><span class="keyword">import</span> &#123; ref, reactive, defineProps,watch, PropType &#125; <span class="keyword">from</span> <span class="string">&#x27;vue&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; Search, RefreshLeft &#125; <span class="keyword">from</span> <span class="string">&#x27;@element-plus/icons-vue&#x27;</span></span><br><span class="line"></span><br><span class="line">type elementItem = &#123;</span><br><span class="line">  prop: string,</span><br><span class="line">  label: string,</span><br><span class="line">  type: string,</span><br><span class="line">  size?: string,</span><br><span class="line">  disabled?: boolean,</span><br><span class="line">  placeholder?: string,</span><br><span class="line">  suffixIcon?: string,</span><br><span class="line">  filterable?: boolean,</span><br><span class="line">  multiple?: boolean,</span><br><span class="line">  style?: object,</span><br><span class="line">  optionGroup?: boolean,</span><br><span class="line">  options: <span class="built_in">Array</span>&lt;any&gt;,</span><br><span class="line">  layout?:object,</span><br><span class="line">  labelWidth?: number | string,</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> emits = defineEmits([<span class="string">&#x27;search&#x27;</span>])</span><br><span class="line"><span class="keyword">const</span> props = defineProps(&#123;</span><br><span class="line">  <span class="comment">// layout</span></span><br><span class="line">    layout: &#123;</span><br><span class="line">      type: <span class="built_in">Object</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">        lg: &#123;</span><br><span class="line">          span: <span class="number">6</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        md: &#123;</span><br><span class="line">          span: <span class="number">8</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        sm: &#123;</span><br><span class="line">          span: <span class="number">12</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        xs: &#123;</span><br><span class="line">          span: <span class="number">24</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;),</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 表单label宽度</span></span><br><span class="line">    labelWidth: &#123;</span><br><span class="line">      type: [<span class="built_in">String</span>, <span class="built_in">Number</span>],</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">&#x27;auto&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 表单元素大小 默认 meidum</span></span><br><span class="line">    size: &#123;</span><br><span class="line">      type: <span class="built_in">String</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="string">&#x27;default&#x27;</span>,</span><br><span class="line">      <span class="comment">// validator: sizeValidator,</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 表单元素</span></span><br><span class="line">    elements: &#123;</span><br><span class="line">      type: <span class="built_in">Array</span> <span class="keyword">as</span> unknown <span class="keyword">as</span> PropType&lt;[elementItem]&gt;,</span><br><span class="line">      required: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">// 是否展示搜索、重置按钮</span></span><br><span class="line">    hideBtns: &#123;</span><br><span class="line">      type: <span class="built_in">Boolean</span>,</span><br><span class="line">      <span class="keyword">default</span>: <span class="literal">false</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> form = ref()</span><br><span class="line"><span class="keyword">const</span> state = reactive(&#123;</span><br><span class="line">  form: &#123;&#125;,</span><br><span class="line">  formatters: &#123;&#125;,</span><br><span class="line">&#125;)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在定义接口时，入参如果不定义类型会报：<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(parameter) <span class="built_in">params</span>: <span class="keyword">any</span></span><br><span class="line"></span><br><span class="line">参数“<span class="built_in">params</span>”隐式具有“<span class="keyword">any</span>”类型。ts(<span class="number">7006</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img data-src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/439521acfbaa49338539156b9329e153~tplv-k3u1fbpfcp-watermark.image" alt="image.png"><br>解决办法就是给入参定义接口类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> generalViewIn &#123;</span><br><span class="line">  page: <span class="built_in">number</span>,</span><br><span class="line">  pagesize: <span class="built_in">number</span>,</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//获取概览列表数据</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">getGeneralView</span>(<span class="params">params: generalViewIn</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> http.get(Api.getGeneralView, params)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样params入参就不会标红了。</p>
+<ol start="3">
+<li>对象使用变量索引时，会标红，报：</li>
+</ol>
+<figure class="highlight isbl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">元素隐式具有 <span class="string">&quot;any&quot;</span> 类型，因为类型为 <span class="string">&quot;string&quot;</span> 的表达式不能用于索引类型 <span class="string">&quot;&#123;&#125;&quot;</span>。\在类型 <span class="string">&quot;&#123;&#125;&quot;</span> 上找不到具有类型为 <span class="string">&quot;string&quot;</span> 的参数的索引签名。<span class="function"><span class="title">ts</span>(<span class="number">7053</span>)</span></span><br></pre></td></tr></table></figure>
+
+<p>解决办法：<br>最简单是方案是修改tsconfig.json配置：在”compilerOptions”下加入下面这句，就不报错了。还有其他方案：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;compilerOptions&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;suppressImplicitAnyIndexErrors&quot;</span>:<span class="literal">true</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>给reactive的变量赋值，会报：<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">不能将类型“&#123; path: any; meta: any; &#125;<span class="selector-attr">[]</span>”分配给类型“never<span class="selector-attr">[]</span>”。\</span><br><span class="line">不能将类型“&#123; path: any; meta: any; &#125;”分配给类型“never”。ts(<span class="number">2322</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img data-src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/845f5d9a319247dbb9d25a55c44d84a8~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>解决办法：<br>在声明变量出就定义类型：</p>
+<p><img data-src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/93316f5ee5ac4b3f900cf41b2bea040d~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<ol start="5">
+<li>在遍历中，item会报错：</li>
+</ol>
+<p><img data-src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/524c3332f3534028944f96225c5b2aac~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>解决办法： 给item定义类型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> subChildren = children.filter(<span class="function">(<span class="params">item:any</span>) =&gt;</span> !item.meta?.hidden);</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>从路由中获取参数，然后传递给接口<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 变量声明</span></span><br><span class="line"><span class="keyword">const</span> &#123; regionName=<span class="string">&quot;&quot;</span>, regionId=<span class="string">&#x27;&#x27;</span>,  status=<span class="string">&quot;&quot;</span> &#125; = route.query</span><br><span class="line"><span class="comment">//接口声明</span></span><br><span class="line">interface getHostListIn &#123;</span><br><span class="line">  regionId: string,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//接口使用</span></span><br><span class="line"><span class="keyword">const</span> getOptionList = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  getHostList(&#123;regionId&#125;).then(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</span><br><span class="line">   ...</span><br><span class="line">  &#125;).catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+传给接口的入参使用从路由中获取的参数时会报错：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">不能将类型“string | LocationQueryValue[]”分配给类型“string”。\</span><br><span class="line">不能将类型“LocationQueryValue[]”分配给类型“string”。ts(<span class="number">2322</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p><img data-src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e3d814427b6f405897321486b2d351cb~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p>
+<p>解决办法：<br>修改接口入参声明类型：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//变量声明</span></span><br><span class="line"><span class="keyword">const</span> regionName = route.query.regionName</span><br><span class="line"><span class="keyword">const</span> regionId = route.query.regionId</span><br><span class="line"><span class="keyword">const</span> status = route.query.status</span><br><span class="line"></span><br><span class="line"><span class="comment">//接口声明</span></span><br><span class="line">interface getHostListIn &#123;</span><br><span class="line">  regionId: string | LocationQueryValue[],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束&感谢您的阅读-------------</div>
+    
+</div>
+
+      
+    </div>
+      
+  <div class="popular-posts-header">相关文章</div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\39130\" rel="bookmark">0-1搭建Vue3+Vite3模板工程（2）-安装依赖</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\44161\" rel="bookmark">0-1搭建Vue3+Vite3模板工程（1）-创建工程</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\29511\" rel="bookmark">0-1搭建Vue3+Vite3模板工程（3）-布局</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\4133\" rel="bookmark">0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航</a></div>
+    </li>
+    <li class="popular-posts-item">
+      <div class="popular-posts-title"><a href="\posts\59852\" rel="bookmark">Vue3+TS项目中遇到的eslint问题</a></div>
+    </li>
+  </ul>
+
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的支持是我继续创作最大的动力！</div>
+  <button onclick="document.querySelector('.post-reward').classList.toggle('active');">
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="w 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.jpg" alt="w 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/atom.xml">
+          <span class="icon">
+            <i class="fa fa-rss"></i>
+          </span>
+
+          <span class="label">RSS</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://github.com/liuhp">
+          <span class="icon">
+            <i class="fa fa-github"></i>
+          </span>
+
+          <span class="label">Github</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Vue3/" rel="tag"><i class="fa fa-tag"></i># Vue3</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/posts/4133/" rel="prev" title="0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航">
+                  <i class="fa fa-chevron-left"></i> 0-1搭建Vue3+Vite3模板工程（4）-左侧菜单导航
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/posts/16572/" rel="next" title="Vue3+Typescript项目配置eslint和commitlint">
+                  Vue3+Typescript项目配置eslint和commitlint <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuhaier</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">89k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">2:28</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      const visitors = document.querySelector('.leancloud_visitors');
+      const url = decodeURI(visitors.id);
+      const title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            const counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      const visitors = document.querySelectorAll('.leancloud_visitors');
+      const entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            const target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    const { app_id, app_key, server_url } = {"enable":true,"app_id":"JgxpDF3cI4DSY4p7bf0GSvBJ-gzGzoHsz","app_key":"UiUXeVoP0JaIhrqiGg8Ezqqu","security":false};
+    function fetchData(api_server) {
+      const Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    const api_server = app_id.slice(-9) === '-MdYXbMMI' ? `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com` : server_url;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('.gitalk-container', () => {
+  NexT.utils.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.7.0/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4909b9af4e8af9c97892',
+      clientSecret: 'b0c5196671369145dd90fc79e96602549aad1b59',
+      repo        : 'liuhp.github.io',
+      owner       : 'liuhp',
+      admin       : ['liuhp'],
+      id          : '1e89c1ea072b198a61fe84dfc87fc79e',
+      proxy       : 'https://cors.zhaoqi.workers.dev/corsproxy/?apiurl=https://github.com/login/oauth/access_token',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render(document.querySelector('.gitalk-container'));
+  }, window.Gitalk);
+});
+</script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+  <!-- 背景动画 -->
+  <script type="text/javascript" src="/js/src/particle.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":150,"height":450},"mobile":{"show":false},"log":false});</script></body>
+</html>

@@ -1,0 +1,14 @@
+<!--
+ * @Author: liuhiaping
+ * @Date: 2021-02-25 11:38:10
+ * @LastEditTime: 2021-08-30 21:13:48
+ * @LastEditors: liuhaiping
+ * @Description: In User Settings Edit
+ * @FilePath: /liuhp.github.io/source/README.MDOWN
+-->
+# liuhp.github.io
+个人博客
+
+npm run server
+
+git push自动部署
